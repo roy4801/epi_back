@@ -1,0 +1,8 @@
+Flask
+Flask_SQLAlchemy
+Flask_Login
+Flask_Migrate
+Flask_Cors
+Flask_Script
+mysqlclient
+Werkzeug
