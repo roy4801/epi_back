@@ -15,16 +15,21 @@ def index():
     if request.method == 'POST':
         all_rec = Success_Record.query.all()
         right_date_list = []
+        # Pass to template
+        stu_list = []
+        name_dict = {}
         date_str = request.form['date'] if 'date' in request.form else None
-        course_select = request.form['course'] if 'course' in request.form else None
         week_day_name = None
+        course_select = request.form['course'] if 'course' in request.form else None
+        course_list = []
         #
+        # if Date passed
         if date_str != '' and date_regex.match(date_str):
             print(date_str)
             date = datetime.strptime(date_str, '%Y-%m-%d')
             week_day_name = calendar.day_name[date.weekday()]
             weekday = date.weekday()+1 # 1 = monday ... 7 = sunday
-
+            # Get all courses of that day
             course_list = Room_108.query.filter_by(Week=weekday).all()
             course_list.sort()
             # for option "other"
@@ -74,4 +79,4 @@ def index():
     return render_template('index.html')
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)
