@@ -1,3 +1,4 @@
+import datetime
 from exts import db
 
 class Room_108(db.Model):
@@ -22,7 +23,7 @@ class Room_108(db.Model):
         info += f'  Week={self.Week} Hour={self.Hour}\n'
         info += f'  Start={self.Start} End={self.End}\n>'
         return info
-
+    # Return time pair (start, end)
     def get_time(self, date):
         start_date = date
         end_date = date
@@ -59,6 +60,10 @@ class Success_Record(db.Model):
         return self.std_no < other.std_no
     def __gt__(self, other):
         return self.std_no > other.std_no
+
+    # Get time
+    def get_time(self):
+        return datetime.datetime.strptime(self.time, '%Y/%m/%d %H:%M:%S')
 
     def __repr__(self):
         info = f'<Success_Record no2={self.no2}\n'

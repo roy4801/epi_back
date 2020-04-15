@@ -25,6 +25,9 @@
                                     {% else %}
                                         <option value="{{ c.id }}">
                                     {% endif %}
+                                {% if c.Classroom %}
+                                    SF{{ c.Classroom }}
+                                {% endif %}
                                 {{ c.Class_Name }} ({{ c.Start }}-{{ c.End }})</option>
                                 {% endfor %}
                             </select>
@@ -32,6 +35,9 @@
                     {% endif %}
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        {% if date_str and course_select %}
+                        <button type="submit" class="btn btn-primary" name="showClassroom">查看座位表</button>
+                        {% endif %}
                     </div>
                 </form>
                     
@@ -46,7 +52,6 @@
                     {% if not stu_list %}
                         <option value="-1">No records.</option>
                     {% endif %}
-                    
                 </select>
         </div>
         </div>

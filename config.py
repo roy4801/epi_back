@@ -15,3 +15,5 @@ DATABASE = 'stu'
 DB_URI = "{}+{}://{}:{}@{}:{}/{}?charset=utf8mb4".format(DIALECT, DRIVER, USERNAME, PASSWORD, HOST, PORT, DATABASE)
 SQLALCHEMY_DATABASE_URI = "{}+{}://{}:{}@{}:{}/{}?charset=utf8mb4".format(DIALECT, DRIVER, USERNAME, PASSWORD, HOST, PORT, DATABASE)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+SESSION_TYPE = 'redis'
